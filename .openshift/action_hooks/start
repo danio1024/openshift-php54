@@ -3,6 +3,13 @@
 # script. The application will work only if it binds to
 # $OPENSHIFT_INTERNAL_IP:8080
 
+
+# Symfony stuff for development
+if [ -d "$OPENSHIFT_REPO_DIR/app" ]; then
+    $OPENSHIFT_REPO_DIR/app/console doctrine:schema:update --force > $OPENSHIFT_DIY_LOG_DIR/symfony_schema.log 2>&1 &
+	$OPENSHIFT_REPO_DIR/app/console assets:install diy > $OPENSHIFT_DIY_LOG_DIR/symfony_assets.log 2>&1 &
+fi
+
 # Start apache if present
 if [ -d "$OPENSHIFT_HOMEDIR/app-root/runtime/srv/httpd" ]; then
     $OPENSHIFT_HOMEDIR/app-root/runtime/srv/httpd/bin/apachectl start > $OPENSHIFT_DIY_LOG_DIR/server.log 2>&1 &
