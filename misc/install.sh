@@ -59,6 +59,7 @@ cd php-5.4.7
 --with-config-file-path=$OPENSHIFT_RUNTIME_DIR/srv/php/etc/apache2 \
 --with-layout=PHP \
 --with-apxs2=$OPENSHIFT_RUNTIME_DIR/srv/httpd/bin/apxs \
+--with-pdo-mysql \
 --enable-mbstring \
 --enable-intl \
 --with-icu-dir=$OPENSHIFT_RUNTIME_DIR/srv/icu
